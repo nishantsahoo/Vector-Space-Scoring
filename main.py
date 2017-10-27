@@ -1,3 +1,7 @@
+'''
+Author - Nishant Sahoo
+'''
+
 print 'Vector Space Scoring'
 
 doc_1 = "Just keep using random words without any punctuation because that's what we need"
@@ -8,56 +12,51 @@ doc_1_list = doc_1.split(' ')
 doc_2_list = doc_2.split(' ')
 doc_3_list = doc_3.split(' ')
 
-doc_1_tf = {}
-doc_2_tf = {}
-doc_3_tf = {}
-doc_all_df = {}
+all_words  = list(set(doc_1_list + doc_2_list + doc_3_list))
 
-for each in doc_1_list:
-	if each in doc_1_tf.keys():
+print 'List of all words -'
+print all_words
+print
+
+doc_1_tf   = {} # term frequency of doc_1
+doc_2_tf   = {} # term frequency of doc_1
+doc_3_tf   = {} # term frequency of doc_1
+doc_all_df = {} # document frequency
+
+# Initializing all tf lists to be empty
+for each in all_words:
+	doc_1_tf[each] = 0
+	doc_2_tf[each] = 0
+	doc_3_tf[each] = 0
+
+# Term Frequency calculation for document 1
+for each in all_words:
+	if each in doc_1_list:
 		doc_1_tf.update({each: doc_1_tf[each]+1})
-	else:
-		doc_1_tf.update({each: 1})
-
-for each in doc_2_list:
-	if each in doc_2_tf.keys():
+	
+# Term Frequency calculation for document 2
+for each in all_words:
+	if each in doc_2_list:
 		doc_2_tf.update({each: doc_2_tf[each]+1})
-	else:
-		doc_2_tf.update({each: 1})
-
-for each in doc_3_list:
-	if each in doc_3_tf.keys():
+	
+# Term Frequency calculation for document 3
+for each in all_words:
+	if each in doc_3_list:
 		doc_3_tf.update({each: doc_3_tf[each]+1})
-	else:
-		doc_3_tf.update({each: 1})
 
 # Document Frequency Calculation
-for each in doc_1_list:
-	if each in doc_all_df.keys():
-		doc_all_df.update({each: doc_all_df[each]+1})
-	else:
-		doc_all_df.update({each: 1})
+for each in all_words:
+	doc_all_df[each] = (doc_1_tf[each] + doc_2_tf[each] + doc_3_tf[each])
 
-for each in doc_2_list:
-	if each in doc_all_df.keys():
-		doc_all_df.update({each: doc_all_df[each]+1})
-	else:
-		doc_all_df.update({each: 1})
 
-for each in doc_3_list:
-	if each in doc_all_df.keys():
-		doc_all_df.update({each: doc_all_df[each]+1})
-	else:
-		doc_all_df.update({each: 1})
-
-print 'Term frequency of Document 1'
+print 'Term frequency of Document 1 -'
 print doc_1_tf
 print
-print 'Term frequency of Document 2'
+print 'Term frequency of Document 2 -'
 print doc_2_tf
 print
-print 'Term frequency of Document 3'
+print 'Term frequency of Document 3 -'
 print doc_3_tf
 print
-print 'Document Frequency'
+print 'Document Frequency -'
 print doc_all_df
