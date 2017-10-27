@@ -13,12 +13,12 @@ doc_1 = "Just keep using random words without any punctuation because that's wha
 doc_2 = "Another set of words which are added here just so that I can complete doc_2"
 doc_3 = "After doc_2 comes doc_3 what do you think we should do next after we're done typing random words"
 
-all_words = list(set(doc_1_list + doc_2_list + doc_3_list))
-number_of_documents = 3
-
 doc_1_list = doc_1.split(' ')
 doc_2_list = doc_2.split(' ')
 doc_3_list = doc_3.split(' ')
+
+all_words = list(set(doc_1_list + doc_2_list + doc_3_list))
+number_of_documents = 3
 
 doc_1_tf   = {} # term frequency of doc_1
 doc_2_tf   = {} # term frequency of doc_1
