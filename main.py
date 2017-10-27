@@ -5,28 +5,38 @@ Author - Nishant Sahoo
 from __future__ import division # to obtain force division to be floating point
 import math
 
+# Title of the project
 print 'Vector Space Scoring'
 
+# Initializing all vaariables
 doc_1 = "Just keep using random words without any punctuation because that's what we need"
 doc_2 = "Another set of words which are added here just so that I can complete doc_2"
 doc_3 = "After doc_2 comes doc_3 what do you think we should do next after we're done typing random words"
 
+all_words = list(set(doc_1_list + doc_2_list + doc_3_list))
 number_of_documents = 3
 
 doc_1_list = doc_1.split(' ')
 doc_2_list = doc_2.split(' ')
 doc_3_list = doc_3.split(' ')
 
-all_words  = list(set(doc_1_list + doc_2_list + doc_3_list))
-
-print 'List of all words -'
-print all_words
-print
-
 doc_1_tf   = {} # term frequency of doc_1
 doc_2_tf   = {} # term frequency of doc_1
 doc_3_tf   = {} # term frequency of doc_1
 doc_all_df = {} # document frequency
+
+idf = {} # Inverse Document Frequency
+
+doc_1_tf_idf = {} # tf-df of doc_1
+doc_2_tf_idf = {} # tf-df of doc_2
+doc_3_tf_idf = {} # tf-df of doc_3
+
+# Variable initialization complete
+
+# Display data collection
+print 'List of all words -'
+print all_words
+print
 
 # Initializing all tf lists to be empty
 for each in all_words:
@@ -67,12 +77,10 @@ print 'Document Frequency -'
 print doc_all_df
 
 # Calculation of Inverse Document Frequency (idf)
-idf = {} # Inverse Document Frequency
-
 for each in all_words:
 	idf[each] = math.log10((number_of_documents/doc_all_df[each]))
 
 print 'Inverted Document Frequency -'
 print idf
 
-
+# tf-idf calculation
