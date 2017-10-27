@@ -2,11 +2,16 @@
 Author - Nishant Sahoo
 '''
 
+from __future__ import division # to obtain force division to be floating point
+import math
+
 print 'Vector Space Scoring'
 
 doc_1 = "Just keep using random words without any punctuation because that's what we need"
 doc_2 = "Another set of words which are added here just so that I can complete doc_2"
 doc_3 = "After doc_2 comes doc_3 what do you think we should do next after we're done typing random words"
+
+number_of_documents = 3
 
 doc_1_list = doc_1.split(' ')
 doc_2_list = doc_2.split(' ')
@@ -61,4 +66,13 @@ print
 print 'Document Frequency -'
 print doc_all_df
 
-# Calculation of tf-tdf now
+# Calculation of Inverse Document Frequency (idf)
+idf = {} # Inverse Document Frequency
+
+for each in all_words:
+	idf[each] = math.log10((number_of_documents/doc_all_df[each]))
+
+print 'Inverted Document Frequency -'
+print idf
+
+
