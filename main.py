@@ -1,9 +1,15 @@
 '''
-Author - Nishant Sahoo
+Author  	   - Nishant Sahoo
+Python version - 3.0
+Project Name   - Vector Space Scoring
+Team Members   - Nishant Sahoo, Vaibhav Mehrotra, Srishti Goyal, Samarth Aggarwal
 '''
 
 from __future__ import division # to obtain force division to be floating point
 import math
+
+import platform
+print('Python version ', platform.python_version())
 
 # Title of the project
 print('Vector Space Scoring')
