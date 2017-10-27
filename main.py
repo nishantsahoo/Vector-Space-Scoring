@@ -60,3 +60,5 @@ print doc_3_tf
 print
 print 'Document Frequency -'
 print doc_all_df
+
+# Calculation of tf-tdf now
