@@ -6,7 +6,7 @@ from __future__ import division # to obtain force division to be floating point
 import math
 
 # Title of the project
-print 'Vector Space Scoring'
+print('Vector Space Scoring')
 
 # Initializing all vaariables
 doc_1 = "Just keep using random words without any punctuation because that's what we need"
@@ -34,9 +34,9 @@ doc_3_tf_idf = {} # tf-df of doc_3
 # Variable initialization complete
 
 # Display data collection
-print 'List of all words -'
-print all_words
-print
+print('List of all words -')
+print(all_words)
+print()
 
 # Initializing all tf lists to be empty
 for each in all_words:
@@ -64,23 +64,23 @@ for each in all_words:
 	doc_all_df[each] = (doc_1_tf[each] + doc_2_tf[each] + doc_3_tf[each])
 
 
-print 'Term frequency of Document 1 -'
-print doc_1_tf
-print
-print 'Term frequency of Document 2 -'
-print doc_2_tf
-print
-print 'Term frequency of Document 3 -'
-print doc_3_tf
-print
-print 'Document Frequency -'
-print doc_all_df
+print('Term frequency of Document 1 -')
+print(doc_1_tf)
+print()
+print('Term frequency of Document 2 -')
+print(doc_2_tf)
+print()
+print('Term frequency of Document 3 -')
+print(doc_3_tf)
+print()
+print('Document Frequency -')
+print(doc_all_df)
 
 # Calculation of Inverse Document Frequency (idf)
 for each in all_words:
 	idf[each] = math.log10((number_of_documents/doc_all_df[each]))
 
-print 'Inverted Document Frequency -'
-print idf
+print('Inverted Document Frequency -')
+print(idf)
 
 # tf-idf calculation
