@@ -28,7 +28,7 @@ doc_2_list = doc_2.split(' ')
 doc_3_list = doc_3.split(' ')
 query_list = query.split(' ')
 
-all_words = list(set(doc_1_list + doc_2_list + doc_3_list))
+all_words  = list(set(doc_1_list + doc_2_list + doc_3_list))
 number_of_documents = 3
 
 doc_1_tf   = {} # term frequency of doc_1
@@ -49,6 +49,12 @@ score_doc_1  = 0
 score_doc_2  = 0
 score_doc_3  = 0
 
+# Initializing all tf lists to be empty
+for each in all_words:
+	doc_1_tf[each] = 0
+	doc_2_tf[each] = 0
+	doc_3_tf[each] = 0
+
 # Variable initialization complete --------------------------------------------
 
 # Display data collection
@@ -57,12 +63,6 @@ print(all_words)
 print()
 print('Query -', query)
 print()
-
-# Initializing all tf lists to be empty
-for each in all_words:
-	doc_1_tf[each] = 0
-	doc_2_tf[each] = 0
-	doc_3_tf[each] = 0
 
 # Term Frequency calculation for document 1
 for each in all_words:
