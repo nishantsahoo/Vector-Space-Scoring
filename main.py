@@ -16,7 +16,7 @@ print('Python version ', platform.python_version())
 # Title of the project
 print('Vector Space Scoring')
 
-# Initializing all vaariables
+# Initializing all variables --------------------------------------------------
 doc_1 = "Just keep using random words without any punctuation because because that's what we need need"
 doc_2 = "Another set of words which are added here just so that I can can complete doc_2"
 doc_3 = "After doc_2 comes doc_3 what do you think we should do next after we're done done typing random words"
@@ -44,7 +44,12 @@ doc_2_tf_idf = {} # tf-df of doc_2
 doc_3_tf_idf = {} # tf-df of doc_3
 query_tf_idf = {} # tf-df of query
 
-# Variable initialization complete
+# Initializing scores as 0
+score_doc_1  = 0
+score_doc_2  = 0
+score_doc_3  = 0
+
+# Variable initialization complete --------------------------------------------
 
 # Display data collection
 print('List of all words -')
@@ -123,10 +128,6 @@ print('tf-idf value of Query -')
 print(query_tf_idf)
 print()
 
-score_doc_1 = 0
-score_doc_2 = 0
-score_doc_3 = 0
-
 # Calculation of Score of documents for the given Query
 for each in doc_1_tf_idf.keys():
 	score_doc_1 += doc_1_tf_idf[each]*query_tf_idf[each]
@@ -137,13 +138,15 @@ for each in doc_2_tf_idf.keys():
 for each in doc_3_tf_idf.keys():
 	score_doc_3 += doc_3_tf_idf[each]*query_tf_idf[each]
 
-# Custom function for sorting (Sorts according to the score)
-def score_cmp(a):
-    return a[1]
-
 sorted_list_score = [("Doc_1", score_doc_1), ("Doc_2", score_doc_2), ("Doc_3", score_doc_3)]
-sorted_list_score.sort(key=score_cmp, reverse=True)
-print('Rank of the documents -')
 
+# Custom function for sorting (Sorts according to the score)
+def score_cmp(list_item):
+    return list_item[1]
+
+# Sorting the document scores in descending order
+sorted_list_score.sort(key=score_cmp, reverse=True)
+
+print('Rank of the documents -')
 for each in sorted_list_score:
 	print(each[0], ' score - ' ,each[1])
