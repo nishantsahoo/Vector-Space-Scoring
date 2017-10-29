@@ -21,7 +21,7 @@ doc_1 = "Just keep using random words without any punctuation because because th
 doc_2 = "Another set of words which are added here just so that I can can complete doc_2"
 doc_3 = "After doc_2 comes doc_3 what do you think we should do next after we're done done typing random words"
 
-query ="set just"
+query ="we what keep"
 
 doc_1_list = doc_1.split(' ')
 doc_2_list = doc_2.split(' ')
@@ -122,3 +122,28 @@ print()
 print('tf-idf value of Query -')
 print(query_tf_idf)
 print()
+
+score_doc_1 = 0
+score_doc_2 = 0
+score_doc_3 = 0
+
+# Calculation of Score of documents for the given Query
+for each in doc_1_tf_idf.keys():
+	score_doc_1 += doc_1_tf_idf[each]*query_tf_idf[each]
+
+for each in doc_2_tf_idf.keys():
+	score_doc_2 += doc_2_tf_idf[each]*query_tf_idf[each]
+
+for each in doc_3_tf_idf.keys():
+	score_doc_3 += doc_3_tf_idf[each]*query_tf_idf[each]
+
+# Custom function for sorting (Sorts according to the score)
+def score_cmp(a):
+    return a[1]
+
+sorted_list_score = [("Doc_1", score_doc_1), ("Doc_2", score_doc_2), ("Doc_3", score_doc_3)]
+sorted_list_score.sort(key=score_cmp, reverse=True)
+print('Rank of the documents -')
+
+for each in sorted_list_score:
+	print(each[0], ' score - ' ,each[1])
