@@ -21,7 +21,7 @@ doc_1 = "Just keep using random words without any punctuation because because th
 doc_2 = "Another set of words which are added here just so that I can can complete doc_2"
 doc_3 = "After doc_2 comes doc_3 what do you think we should do next after we're done done typing random words"
 
-query ="we what keep"
+query ="doc_2 we are do you"
 
 doc_1_list = doc_1.split(' ')
 doc_2_list = doc_2.split(' ')
@@ -128,7 +128,7 @@ print('tf-idf value of Query -')
 print(query_tf_idf)
 print()
 
-# Calculation of Score of documents for the given Query
+# Calculation of partial scores of documents for the given query
 for each in doc_1_tf_idf.keys():
 	score_doc_1 += doc_1_tf_idf[each]*query_tf_idf[each]
 
@@ -137,6 +137,21 @@ for each in doc_2_tf_idf.keys():
 
 for each in doc_3_tf_idf.keys():
 	score_doc_3 += doc_3_tf_idf[each]*query_tf_idf[each]
+
+# Calculation of euclidean_length
+def euclidean_length(vector):
+	t_sum = length = 0
+	for each in vector.values():
+		t_sum += each**2
+
+	length = math.sqrt(t_sum)
+	return length
+
+# Calculation of scores of documents for the given query
+score_doc_1 /= (euclidean_length(doc_1_tf_idf)*euclidean_length(query_tf_idf))
+score_doc_2 /= (euclidean_length(doc_2_tf_idf)*euclidean_length(query_tf_idf))
+score_doc_3 /= (euclidean_length(doc_3_tf_idf)*euclidean_length(query_tf_idf))
+
 
 sorted_list_score = [("Doc_1", score_doc_1), ("Doc_2", score_doc_2), ("Doc_3", score_doc_3)]
 
@@ -149,4 +164,4 @@ sorted_list_score.sort(key=score_cmp, reverse=True)
 
 print('Rank of the documents -')
 for each in sorted_list_score:
-	print(each[0], ' score - ' ,each[1])
+	print(each[0], 'score -' , each[1])
