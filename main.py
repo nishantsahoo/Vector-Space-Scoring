@@ -5,6 +5,8 @@ Project Name   - Vector Space Scoring
 Team Members   - Nishant Sahoo, Vaibhav Mehrotra, Srishti Goyal, Samarth Aggarwal
 '''
 
+#!python3
+
 from __future__ import division # to obtain force division to be floating point
 import math
 
