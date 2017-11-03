@@ -106,6 +106,7 @@ for word in dynamic_all_words:
 print('Dynamic Inverted Document Frequency -')
 print(dynamic_idf)
 
+# Calculation of doc_tf_idf
 
 ### End ###########################################################################
 

@@ -47,9 +47,10 @@ def fetch():
     print('Vector Space Scoring')
 
     # Initializing all variables --------------------------------------------------
-    doc_1 = "Just keep using random words without any punctuation because because that's what we need need"
-    doc_2 = "Another set of words which are added here just so that I can can complete doc_2"
-    doc_3 = "Shinjini After doc_2 comes doc_3 what do you think we should do next after we're done done typing random words"
+    documents = ["Just keep using random words without any punctuation because because that's what we need need","Another set of words which are added here just so that I can can complete doc_2","Shinjini After doc_2 comes doc_3 what do you think we should do next after we're done done typing random words"]
+    doc_1 = documents[0]
+    doc_2 = documents[1]
+    doc_3 = documents[2]
 
     query = s
 
@@ -197,7 +198,7 @@ def fetch():
 
     output_string = ""
     for each in sorted_list_score:
-        output_string += str(each[0]) + ': score -' + str(each[1]) + '\n'
+        output_string += str(each[0]) + ': score = ' + str(each[1]) + '\n'
 
     # Critical section ends here #
     ##################################
