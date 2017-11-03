@@ -11,6 +11,7 @@ from __future__ import division # to obtain force division to be floating point
 import math
 import platform
 from tkinter import *
+from tkinter import messagebox
 import math
 
 print('Python version ', platform.python_version())
@@ -23,7 +24,7 @@ root.geometry("800x400") # Size of the window
 # Heading
 w = Label(root, text="VECTOR SPACE MODEL CALCULATOR",
                 fg="blue",
-                font=("Franklic Gothic Book", 24),
+                font=("Franklic Gothic Book", 20),
                 justify= CENTER, height=2)
 w.pack()
 
@@ -31,7 +32,7 @@ w.pack()
 Label(root, text="Enter Query",
             font=("Franklic Gothic Book", 16),
             justify= CENTER, height=2).pack()
-        
+
 
 # Storing into a variable s on click of a button fetch
 def fetch():
@@ -194,17 +195,14 @@ def fetch():
     for each in sorted_list_score:
         print(each[0], 'score -' , each[1])
 
-    output_string = "Rank of the documents -\n"
+    output_string = ""
     for each in sorted_list_score:
         output_string += str(each[0]) + ': score -' + str(each[1]) + '\n'
 
     # Critical section ends here #
     ##################################
 
-    s = StringVar()
-    s.set(output_string)
-    s_label = Label(root, textvariable=s, width=30) #the value is output here
-    s_label.pack()
+    messagebox.showinfo("Rank of the documents -", output_string)
 
 # Data is fetched into s
     
