@@ -21,6 +21,8 @@ doc_1 = "Just keep using random words without any punctuation because because th
 doc_2 = "Another set of words which are added here just so that I can can complete doc_2"
 doc_3 = "Shinjini After doc_2 comes doc_3 what do you think we should do next after we're done done typing random words"
 
+dict_doc = {"Doc_1": doc_1, "Doc_2": doc_2, "Doc_3": doc_3}
+
 query = "Shinjini we do doc_2 what"
 query_list = query.split(' ')
 
@@ -43,10 +45,15 @@ print()
 doc_1_tf   = {} # term frequency of doc_1
 doc_2_tf   = {} # term frequency of doc_1
 doc_3_tf   = {} # term frequency of doc_1
+doc_all_df = {} # document frequency
 
 ### Dynamic code ##################################################################
-documents = [doc_1, doc_2, doc_3]
-print('Documents: ',documents)
+
+documents = []
+for each in dict_doc:
+	documents += [str(dict_doc[each])]
+
+print('Documents:', documents)
 doc_list = []
 for each in documents:
 	doc_list += [each.split(' ')]
@@ -64,9 +71,11 @@ dynamic_number_of_documents = len(documents)
 print("dynamic_number_of_documents:", dynamic_number_of_documents)
 
 doc_tf    = [] # term frequency of documents
-doc_df    = [] # document frequency
+doc_df    = {} # document frequency
 query_tf  = {} # term frequency of query
 doc_score = [] # Scores of each document
+
+dynamic_idf = {}
 
 # term frequency for each document
 for doc in doc_list:
@@ -81,10 +90,24 @@ print("doc_tf:", doc_tf)
 for each in dynamic_all_words:
 	query_tf.update({each: query_list.count(each)})
 
+for word in dynamic_all_words:
+	temp_sum = 0
+	for tf in doc_tf:
+		temp_sum += tf[word]
+
+	doc_df[word] = temp_sum
+
+print("Dynamic document frequency:", doc_df)
+
+# Calculation of Inverse Document Frequency (idf)
+for word in dynamic_all_words:
+	dynamic_idf[word] = math.log10((number_of_documents/doc_df[word]))
+
+print('Dynamic Inverted Document Frequency -')
+print(dynamic_idf)
+
 
 ### End ###########################################################################
-
-doc_all_df = {} # document frequency
 
 idf = {} # Inverse Document Frequency
 
