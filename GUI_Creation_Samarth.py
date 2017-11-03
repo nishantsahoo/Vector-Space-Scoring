@@ -1,11 +1,24 @@
+'''
+Author         - Nishant Sahoo, Samarth Agarwal
+Python version - 3.0.0
+Project Name   - Vector Space Scoring
+Team Members   - Nishant Sahoo, Samarth Agarwal, Vaibhav Mehrotra, Srishti Goyal
+'''
+
+#!python3
+
 from __future__ import division # to obtain force division to be floating point
 import math
 import platform
 from tkinter import *
 import math
 
+print('Python version ', platform.python_version())
+
+
+# GUI Window
 root = Tk()
-root.geometry("800x400")
+root.geometry("800x400") # Size of the window
 
 # Heading
 w = Label(root, text="VECTOR SPACE MODEL CALCULATOR",
