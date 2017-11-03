@@ -63,20 +63,27 @@ def fetch():
     doc_1 = documents[0]
     doc_2 = documents[1]
     doc_3 = documents[2]
+    doc_4 = documents[3]
+    doc_5 = documents[4]
+    
 
     query = s
 
     doc_1_list = doc_1.split(' ')
     doc_2_list = doc_2.split(' ')
     doc_3_list = doc_3.split(' ')
+    doc_4_list = doc_4.split(' ')
+    doc_5_list = doc_5.split(' ')
     query_list = query.split(' ')
 
-    all_words  = list(set(doc_1_list + doc_2_list + doc_3_list))
-    number_of_documents = 3
+    all_words  = list(set(doc_1_list + doc_2_list + doc_3_list + doc_4_list + doc_5_list))
+    number_of_documents = 5
 
     doc_1_tf   = {} # term frequency of doc_1
     doc_2_tf   = {} # term frequency of doc_1
     doc_3_tf   = {} # term frequency of doc_1
+    doc_4_tf   = {} 
+    doc_5_tf   = {}
     query_tf   = {} # term frequency of query
     doc_all_df = {} # document frequency
 
@@ -85,18 +92,24 @@ def fetch():
     doc_1_tf_idf = {} # tf-df of doc_1
     doc_2_tf_idf = {} # tf-df of doc_2
     doc_3_tf_idf = {} # tf-df of doc_3
+    doc_4_tf_idf = {}
+    doc_5_tf_idf = {}
     query_tf_idf = {} # tf-df of query
 
     # Initializing scores as 0
     score_doc_1  = 0
     score_doc_2  = 0
     score_doc_3  = 0
+    score_doc_4  = 0
+    score_doc_5  = 0
 
     # Initializing all tf lists to be empty
     for each in all_words:
         doc_1_tf[each] = 0
         doc_2_tf[each] = 0
         doc_3_tf[each] = 0
+        doc_4_tf[each] = 0
+        doc_5_tf[each] = 0
 
     # Variable initialization complete --------------------------------------------
 
@@ -119,13 +132,21 @@ def fetch():
     for each in all_words:
         doc_3_tf.update({each: doc_3_list.count(each)})
 
+    # Term Frequency calculation for document 4
+    for each in all_words:
+        doc_4_tf.update({each: doc_4_list.count(each)})
+
+    # Term Frequency calculation for document 5
+    for each in all_words:
+        doc_5_tf.update({each: doc_5_list.count(each)})
+
     # Term Frequency calculation for query
     for each in all_words:
         query_tf.update({each: query_list.count(each)})
 
     # Document Frequency Calculation
     for each in all_words:
-        doc_all_df[each] = (doc_1_tf[each] + doc_2_tf[each] + doc_3_tf[each])
+        doc_all_df[each] = (doc_1_tf[each] + doc_2_tf[each] + doc_3_tf[each] + doc_4_tf[each] + doc_5_tf[each])
 
     print('Term frequency of Document 1 -')
     print(doc_1_tf)
@@ -135,6 +156,12 @@ def fetch():
     print()
     print('Term frequency of Document 3 -')
     print(doc_3_tf)
+    print()
+    print('Term frequency of Document 3 -')
+    print(doc_4_tf)
+    print()
+    print('Term frequency of Document 3 -')
+    print(doc_5_tf)
     print()
     print('Term frequency of Query -')
     print(query_tf)
@@ -163,6 +190,8 @@ def fetch():
         doc_1_tf_idf[each] = idf[each]*doc_1_tf[each]
         doc_2_tf_idf[each] = idf[each]*doc_2_tf[each]
         doc_3_tf_idf[each] = idf[each]*doc_3_tf[each]
+        doc_4_tf_idf[each] = idf[each]*doc_4_tf[each]
+        doc_5_tf_idf[each] = idf[each]*doc_5_tf[each]
         query_tf_idf[each] = idf[each]*query_tf[each]
 
     print()
@@ -174,6 +203,12 @@ def fetch():
     print()
     print('tf-idf value of Document 3 -')
     print(doc_3_tf_idf)
+    print()
+    print('tf-idf value of Document 3 -')
+    print(doc_4_tf_idf)
+    print()
+    print('tf-idf value of Document 3 -')
+    print(doc_5_tf_idf)
     print()
     print('tf-idf value of Query -')
     print(query_tf_idf)
@@ -189,6 +224,12 @@ def fetch():
     for each in doc_3_tf_idf.keys():
         score_doc_3 += doc_3_tf_idf[each]*query_tf_idf[each]
 
+    for each in doc_4_tf_idf.keys():
+        score_doc_4 += doc_4_tf_idf[each]*query_tf_idf[each]
+
+    for each in doc_5_tf_idf.keys():
+        score_doc_5 += doc_5_tf_idf[each]*query_tf_idf[each]
+
     # Calculation of euclidean_length
     def euclidean_length(vector):
         t_sum = length = 0
@@ -202,8 +243,10 @@ def fetch():
     score_doc_1 /= (euclidean_length(doc_1_tf_idf)*euclidean_length(query_tf_idf))
     score_doc_2 /= (euclidean_length(doc_2_tf_idf)*euclidean_length(query_tf_idf))
     score_doc_3 /= (euclidean_length(doc_3_tf_idf)*euclidean_length(query_tf_idf))
+    score_doc_4 /= (euclidean_length(doc_4_tf_idf)*euclidean_length(query_tf_idf))
+    score_doc_5 /= (euclidean_length(doc_5_tf_idf)*euclidean_length(query_tf_idf))
 
-    sorted_list_score = [("Doc_1", score_doc_1), ("Doc_2", score_doc_2), ("Doc_3", score_doc_3)]
+    sorted_list_score = [("Doc_1", score_doc_1), ("Doc_2", score_doc_2), ("Doc_3", score_doc_3), ("Doc_4", score_doc_4), ("Doc_5", score_doc_5)]
 
     # Custom function for sorting (Sorts according to the score)
     def score_cmp(list_item):
