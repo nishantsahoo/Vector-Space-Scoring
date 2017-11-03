@@ -19,9 +19,9 @@ print('Vector Space Scoring')
 # Initializing all variables --------------------------------------------------
 doc_1 = "Just keep using random words without any punctuation because because that's what we need need"
 doc_2 = "Another set of words which are added here just so that I can can complete doc_2"
-doc_3 = "After doc_2 comes doc_3 what do you think we should do next after we're done done typing random words"
+doc_3 = "Shinjini After doc_2 comes doc_3 what do you think we should do next after we're done done typing random words"
 
-query ="doc_2 we are do you"
+query = "Shinjini we do doc_2 what"
 
 doc_1_list = doc_1.split(' ')
 doc_2_list = doc_2.split(' ')
@@ -151,7 +151,6 @@ def euclidean_length(vector):
 score_doc_1 /= (euclidean_length(doc_1_tf_idf)*euclidean_length(query_tf_idf))
 score_doc_2 /= (euclidean_length(doc_2_tf_idf)*euclidean_length(query_tf_idf))
 score_doc_3 /= (euclidean_length(doc_3_tf_idf)*euclidean_length(query_tf_idf))
-
 
 sorted_list_score = [("Doc_1", score_doc_1), ("Doc_2", score_doc_2), ("Doc_3", score_doc_3)]
 
