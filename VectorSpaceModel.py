@@ -17,7 +17,6 @@ import os
 
 print('Python version ', platform.python_version())
 
-
 # GUI Window
 root = Tk()
 root.geometry("800x400") # Size of the window
