@@ -13,7 +13,6 @@ import platform
 from tkinter import *
 from tkinter import messagebox
 import math
-import os
 
 print('Python version ', platform.python_version())
 
@@ -48,18 +47,7 @@ def fetch():
     print('Vector Space Scoring')
 
     # Initializing all variables --------------------------------------------------
-    
-    documents = []
-    for cwd, sub_folder, files in os.walk("documents"):
-    	for file in files:
-    		print("File name:", file)
-    		f = open(str(cwd + "/" + file), "r")
-    		doc_text = f.read()
-    		print(doc_text)
-    		documents += [doc_text]
-
-
-    print(documents)
+    documents = ["Just keep using random words without any punctuation because because that's what we need need","Another set of words which are added here just so that I can can complete doc_2","Shinjini After doc_2 comes doc_3 what do you think we should do next after we're done done typing random words"]
     doc_1 = documents[0]
     doc_2 = documents[1]
     doc_3 = documents[2]
@@ -142,14 +130,6 @@ def fetch():
     print('Document Frequency -')
     print(doc_all_df)
 
-    sum = 0
-    for each in all_words:
-    	sum += query_tf[each]
-
-    if sum == 0:
-    	messagebox.showinfo("ERROR!", "No document found for the given query")
-    	e.delete(0, END)
-
     # Calculation of Inverse Document Frequency (idf)
     for each in all_words:
         idf[each] = math.log10((number_of_documents/doc_all_df[each]))
@@ -220,10 +200,10 @@ def fetch():
     for each in sorted_list_score:
         output_string += str(each[0]) + ': score = ' + str(each[1]) + '\n'
 
-    messagebox.showinfo("Rank of the documents -", output_string)
-    e.delete(0, END)
     # Critical section ends here #
     ##################################
+
+    messagebox.showinfo("Rank of the documents -", output_string)
 
 # Data is fetched into s
     
