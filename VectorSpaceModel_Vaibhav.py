@@ -1,5 +1,5 @@
 '''
-Author         - Nishant Sahoo, Samarth Agarwal
+Author         - Nishant Sahoo, Samarth Agarwal, Vaibhav Mehrotra
 Python version - 3.0.0
 Project Name   - Vector Space Scoring
 Team Members   - Nishant Sahoo, Samarth Agarwal, Vaibhav Mehrotra, Srishti Goyal
